@@ -24,35 +24,17 @@ model User {
 
 // BLOGS
 model BlogPost {
-  id           Int         @id @default(autoincrement())
-  published    Boolean     @default(false)
+  id           Int      @id @default(autoincrement())
+  published    Boolean  @default(false)
   title        String
   thumbnailImg String?
   description  String?
-  slug         String      @unique
-  createdAt    DateTime    @default(now())
-  updatedAt    DateTime    @updatedAt
-  author       User        @relation(fields: [authorId], references: [id])
+  content      String
+  slug         String   @unique
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  author       User     @relation(fields: [authorId], references: [id])
   authorId     Int
-  items        BlogItem[]
-  images       BlogImage[]
-}
-
-model BlogItem {
-  id         Int      @id @default(autoincrement())
-  content    String
-  order      Int
-  title      String
-  blogPost   BlogPost @relation(fields: [blogPostId], references: [id])
-  blogPostId Int
-}
-
-model BlogImage {
-  id         Int       @id @default(autoincrement())
-  url        String
-  order      Int
-  BlogPost   BlogPost? @relation(fields: [blogPostId], references: [id])
-  blogPostId Int?
 }
 
 // TODO auth tables
