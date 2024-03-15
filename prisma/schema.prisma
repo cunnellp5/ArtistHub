@@ -1,3 +1,6 @@
+// $ npx prisma studio
+
+// SETUP
 generator client {
   provider = "prisma-client-js"
 }
@@ -7,6 +10,9 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// MODELS
+
+// USERS
 model User {
   id        Int        @id @default(autoincrement())
   email     String     @unique
@@ -16,20 +22,20 @@ model User {
   posts     BlogPost[]
 }
 
-// TODO auth tables
-
 // BLOGS
 model BlogPost {
-  id        Int         @id @default(autoincrement())
-  published Boolean     @default(false)
-  title     String
-  slug      String      @unique
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
-  author    User        @relation(fields: [authorId], references: [id])
-  authorId  Int
-  items     BlogItem[]
-  images    BlogImage[]
+  id           Int         @id @default(autoincrement())
+  published    Boolean     @default(false)
+  title        String
+  thumbnailImg String?
+  description  String?
+  slug         String      @unique
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  author       User        @relation(fields: [authorId], references: [id])
+  authorId     Int
+  items        BlogItem[]
+  images       BlogImage[]
 }
 
 model BlogItem {
@@ -49,28 +55,10 @@ model BlogImage {
   blogPostId Int?
 }
 
+// TODO auth tables
+
 // TODO appointments >> users signed in
 // This will be used for users creating appointments, we will want to create a secret black-book
 // Admin can update the provile after a 'visit'
-// model Profile {
-//   id     Int     @id @default(autoincrement())
-//   bio    String?
-//   user   User    @relation(fields: [userId], references: [id])
-//   userId Int     @unique
-// }
 
 // TODO EPK tables
-// model EPK {
-//   id          Int      @id @default(autoincrement())
-//   biography   String
-//   discography String
-//   photos      String
-//   videos      String
-//   tourDates   String
-//   contactInfo String
-//   pressCoverage String
-//   createdAt   DateTime @default(now())
-//   updatedAt   DateTime @updatedAt
-//   artist      User     @relation(fields: [artistId], references: [id])
-//   artistId    Int @unique
-// }
