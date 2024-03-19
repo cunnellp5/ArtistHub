@@ -23,14 +23,14 @@
 
 <AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
     <svelte:fragment slot="lead">
-        <Icon src={Paint} size="24px" class="stroke-1"></Icon>
+        <a href="/">
+            <Icon src={Paint} size="24px" class="stroke-1"></Icon>
+        </a>
     </svelte:fragment>
     (Template)
     <svelte:fragment slot="trail">
         <button class="btn justify-between" use:popup={popupCombobox}>
             <Icon src={Dots} size="24px" class="stroke-1"></Icon>
-            <!-- <span class="capitalize">{comboboxValue ?? 'Trigger'}</span> -->
-            <!-- <span>↓</span> -->
         </button>
         <div class="card rounded-md w-48 shadow-xl py-2" data-popup="popupCombobox">
             <ListBox rounded="rounded-none">
@@ -45,7 +45,9 @@
                     bind:group={comboboxValue}
                     name="medium"
                     value="television">
-                    Create Account
+                    <a href="/CreateAccount">
+                        Create Account
+                    </a>
                 </ListBoxItem>
                 <hr />
                 <div class="w-full flex justify-between px-4 py-2">
