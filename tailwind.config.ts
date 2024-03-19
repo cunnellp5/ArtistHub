@@ -7,7 +7,6 @@ const config = {
 	darkmode: 'class',
 	content: [
 		'./src/**/*.{html,js,svelte,ts}',
-		// 3. Append the path to the Skeleton package
 		join(require.resolve('@skeletonlabs/skeleton'), '../**/*.{html,js,svelte,ts}')
 	],
 	theme: {
@@ -28,6 +27,10 @@ const config = {
 					},
 					{
 						name: "wintry",
+						enhancements: true
+					},
+					{
+						name: "crimson",
 						enhancements: true
 					},
 				]
