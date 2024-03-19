@@ -33,6 +33,10 @@ const config = {
 						name: "crimson",
 						enhancements: true
 					},
+					{
+						name: "vintage",
+						enhancements: true
+					},
 				]
 			}
 		})
