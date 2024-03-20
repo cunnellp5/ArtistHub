@@ -1,10 +1,9 @@
 <script lang="ts">
     import { enhance } from '$app/forms';
     import { pageHeader } from '$lib/stores/page';
-    import { getContext, onMount } from 'svelte';
+    import { onMount } from 'svelte';
+    import dictionary from '$lib/dictionary/en';
   
-    const i18n = getContext("i18n");
-
     type Event = { preventDefault: () => void; };
     
     onMount(() => {
@@ -31,7 +30,7 @@
         }}>
 
         <label class="label" for="name">
-            <span>{i18n?.t("createAccount.username")}</span>
+            <span>{dictionary['createAccount.username']}</span>
             <input 
                 id="username"
                 class="input"
@@ -44,7 +43,7 @@
         </label>
 
         <label class="label" for="email">
-            <span>{i18n?.t("createAccount.email")}</span>
+            <span>{dictionary['createAccount.email']}</span>
             <input 
                 id="email"
                 class="input"
@@ -56,7 +55,7 @@
         </label>
 
         <div class="flex justify-end">
-            <button class="btn variant-filled-success" type="submit">Lesko</button>
+            <button class="btn variant-filled-success" type="submit">{dictionary['createAccount.submit']}</button>
         </div>
     </form>
 </section>

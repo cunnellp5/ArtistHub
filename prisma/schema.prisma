@@ -1,5 +1,10 @@
 // $ npx prisma studio
 
+enum Role {
+  USER
+  ADMIN
+}
+
 // SETUP
 generator client {
   provider = "prisma-client-js"
@@ -20,6 +25,7 @@ model User {
   lastName  String
   username  String     @unique
   posts     BlogPost[]
+  role      Role       @default(USER)
 }
 
 // BLOGS
