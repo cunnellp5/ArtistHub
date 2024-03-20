@@ -1,7 +1,9 @@
 <script lang="ts">
-    import { pageHeader } from '$lib/stores/page';
-	import { onMount } from 'svelte';
     import { enhance } from '$app/forms';
+    import { pageHeader } from '$lib/stores/page';
+    import { getContext, onMount } from 'svelte';
+  
+    const i18n = getContext("i18n");
 
     type Event = { preventDefault: () => void; };
     
@@ -15,8 +17,6 @@
     const submit = async (event: Event) => {
         event.preventDefault();
         console.log(username, email);
-        // username = '';
-        // email = '';
     };
 </script>
 
@@ -31,7 +31,7 @@
         }}>
 
         <label class="label" for="name">
-            <span>Username</span>
+            <span>{i18n?.t("createAccount.username")}</span>
             <input 
                 id="username"
                 class="input"
@@ -44,7 +44,7 @@
         </label>
 
         <label class="label" for="email">
-            <span>Email</span>
+            <span>{i18n?.t("createAccount.email")}</span>
             <input 
                 id="email"
                 class="input"

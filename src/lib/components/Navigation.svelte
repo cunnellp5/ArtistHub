@@ -27,7 +27,7 @@
             <Icon src={Paint} size="24px" class="stroke-1"></Icon>
         </a>
     </svelte:fragment>
-    (Template)
+    <!-- (Template) -->
     <svelte:fragment slot="trail">
         <button class="btn justify-between" use:popup={popupCombobox}>
             <Icon src={Dots} size="24px" class="stroke-1"></Icon>
